@@ -1,0 +1,15 @@
+<%= link_to "Home", root_path %>
+<h1>Search Results</h1>
+
+<h3>Total members of '<%= @facade.nation_query %>': <b><%= @facade.total_nation_members %></b></h3>
+
+<% @facade.first_25_nation_members.each do |member| %>
+  <div class='character'>
+    <hr>
+    <img src="<%= member.photo_url %>" class="character-pic">
+    <h2 class="name"><%= member.name %></h2>
+    <p class= "allies"><b>Allies: </b><%= member.allies.compact_blank.to_sentence %></p>
+    <p class="enemies"><b>Enemies: </b><%= member.enemies.compact_blank.to_sentence %></p>
+    <p class="affiliations"><b>Affiliations: </b><%= member.affiliation %></p>
+  </div>
+<% end %>
